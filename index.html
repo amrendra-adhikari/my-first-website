@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amrendra Adhikari - Student, Coder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+<a href="#home" class="logo">amrendra_</a>
+<button class="menu" id="menuBtn" aria-label="menu">☰</button>
+<nav class="nav-links" id="navLinks">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#stack">Stack</a>
+<a href="#projects">Projects</a>
+<a href="#contact" class="nav-cta">Contact</a>
+</nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="hero-left">
+<div class="location"><span class="dot"></span> Darahari, Rautahat • Nepal</div>
+<h1>Amrendra<br><span class="highlight">Adhikari</span></h1>
+<p class="bio">Student, Coder. I build small websites with HTML, CSS and Python.</p>
+<div class="actions">
+<a href="#projects" class="btn primary">View projects</a>
+<a href="#contact" class="btn secondary">Contact me</a>
+</div>
+
+<div class="terminal">
+<div class="term-top"><span></span><span></span><span></span><p>amrendra@portfolio: ~</p></div>
+<div class="term-body">
+<p><span class="prompt">$</span> whoami</p>
+<p><span class="key">name</span> Amrendra Adhikari</p>
+<p><span class="key">role</span> Student, Coder</p>
+<p><span class="key">class</span> 10</p>
+<p><span class="key">location</span> Darahari, Rautahat, Nepal</p>
+</div>
+</div>
+</div>
+
+<div class="hero-right">
+<div class="avatar">
+<img src="public/images/amrendra/amrendra.jpg" alt="Amrendra Adhikari">
+</div>
+</div>
+</section>
+
+<section class="section" id="about">
+<h2>About Me</h2>
+<div class="card">
+<p>My name is <b>Amrendra Adhikari</b>. I am a student and a friendly, hardworking person. My hobby is playing online games and I love spending time with my friends. I enjoy learning new things and currently I am focused on learning python programming</p>
+</div>
+</section>
+
+<section class="section" id="stack">
+<h2>Stack</h2>
+<div class="card">
+<div class="stack-list">
+<span>HTML</span>
+<span>CSS</span>
+<span>Python</span>
+</div>
+</div>
+</section>
+
+<section class="section" id="projects">
+<h2>Projects</h2>
+<div class="projects-grid">
+<div class="project-card">
+<span class="pc-num">01</span>
+<h3>Portfolio Website</h3>
+<p>This personal portfolio site. a minimal modern design system.</p>
+<div class="tags"><span>HTML</span><span>CSS</span></div>
+</div>
+<div class="project-card">
+<span class="pc-num">02</span>
+<h3>Learning Python</h3>
+<p>Small scripts, automation tools and practice projects while learning Python fundamentals.</p>
+<div class="tags"><span>Python</span></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="contact">
+<h2>Contact Me</h2>
+<div class="card contact-card">
+<form id="contactForm">
+<input type="hidden" name="access_key" value="0021e387-9805-4b56-9d1c-717c0ffe50b9">
+<div class="form-row">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+</div>
+<textarea name="message" placeholder="Tell me about your project..." required></textarea>
+<button type="submit" class="btn primary full" id="sendBtn">Send Message</button>
+<p id="formStatus"></p>
+</form>
+</div>
+</section>
+</main>
+
+<footer class="footer">
+<p>© 2026 Amrendra Adhikari. All rights reserved.</p>
+<span>Darahari, Rautahat, Nepal</span>
+</footer>
+
+<script>
+const btn=document.getElementById('menuBtn'),links=document.getElementById('navLinks');
+btn.onclick=()=>links.classList.toggle('open');
+document.querySelectorAll('.nav-links a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
+const form=document.getElementById('contactForm'),status=document.getElementById('formStatus'),sBtn=document.getElementById('sendBtn');
+form.addEventListener('submit',async(e)=>{
+ e.preventDefault();sBtn.textContent='Sending...';status.textContent='Sending...';status.style.display='block';
+ const data=new FormData(form);const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:data});const j=await res.json();
+ if(j.success){status.textContent='Message sent successfully!';sBtn.textContent='Sent ✓';form.reset();setTimeout(()=>{sBtn.textContent='Send Message';status.style.display='none'},3000)}
+ else{status.textContent='Failed to send. Try again.';sBtn.textContent='Send Message'}
+});
+</script>
+</body>
+</html>
